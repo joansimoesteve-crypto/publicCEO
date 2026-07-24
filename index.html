@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Asistente Virtual IA</title>
+
+<link rel="stylesheet" href="./src/style.css">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+</head>
+
+<body>
+
+<div id="app">
+
+    <!-- Fondo -->
+
+    <div class="background">
+
+        <div class="gradient"></div>
+
+        <div class="grid"></div>
+
+        <div class="light light1"></div>
+        <div class="light light2"></div>
+
+    </div>
+
+    <!-- Avatar -->
+
+    <section class="avatar-section">
+
+        <div class="avatar-wrapper">
+
+            <div class="avatar-glow"></div>
+
+            <div class="avatar-card">
+
+                <img
+                    id="avatarImage"
+                    src="/avatar.png"
+                    draggable="false"
+                >
+
+                <div id="mouth"></div>
+
+                <div id="leftEye"></div>
+                <div id="rightEye"></div>
+
+                <div id="leftLid"></div>
+                <div id="rightLid"></div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+    <!-- Panel -->
+
+    <aside class="panel">
+
+        <div class="brand">
+
+            <div class="logo">
+                AI
+            </div>
+
+            <div>
+
+                <h1>Asistente Virtual</h1>
+
+                <p>Siempre disponible para ayudarte.</p>
+
+            </div>
+
+        </div>
+
+        <div class="conversation">
+
+            <div id="messages">
+
+                <div class="assistant">
+
+                    <div class="bubble">
+
+                        Hola.
+
+                        Soy tu asistente virtual.
+
+                        Estoy preparado para ayudarte con cualquier consulta.
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+        <div class="quickActions">
+
+            <button class="action">
+                Información
+            </button>
+
+            <button class="action">
+                Servicios
+            </button>
+
+            <button class="action">
+                Contacto
+            </button>
+
+            <button class="action">
+                Ayuda
+            </button>
+
+        </div>
+
+        <div class="inputArea">
+
+            <input
+                id="prompt"
+                type="text"
+                placeholder="Escribe tu pregunta..."
+            >
+
+            <button id="send">
+
+                ➜
+
+            </button>
+
+            <button id="mic">
+
+                🎤
+
+            </button>
+
+        </div>
+
+    </aside>
+
+</div>
+
+<script type="module" src="./src/main.js"></script>
+
+</body>
+
+</html>
