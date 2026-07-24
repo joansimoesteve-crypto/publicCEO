@@ -1,60 +1,50 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>PublicCEO D-ID Test</title>
 
-    <style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-        *{
-            margin:0;
-            padding:0;
-            box-sizing:border-box;
-        }
+<title>D-ID Test</title>
 
-        body{
-            background:#08111d;
-            display:flex;
-            justify-content:center;
-            align-items:center;
-            height:100vh;
-            font-family:Arial,sans-serif;
-        }
+<style>
 
-        #did-agent-container{
+body{
+    margin:0;
+    background:#08111d;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    height:100vh;
+}
 
-            width:900px;
-            height:700px;
+#did-agent-container{
+    width:900px;
+    height:700px;
+    border-radius:20px;
+    overflow:hidden;
+    border:1px solid rgba(255,255,255,.1);
+}
 
-            border-radius:24px;
-
-            overflow:hidden;
-
-            background:#111;
-
-            border:1px solid rgba(255,255,255,.1);
-
-            box-shadow:
-                0 0 40px rgba(0,170,255,.2);
-        }
-
-    </style>
+</style>
 
 </head>
 
 <body>
 
-    <div id="did-agent-container"></div>
+<div id="did-agent-container"></div>
 
-    .d-id.com/v2/index.js"
-        data-mode="full"
-        data-client-key="ck_elBTIrBd1dSWLKLVazl1J"
-        data-agent-id="v2_agt_GOAdORy_"
-        data-name="did-agent"
-        data-monitor="true"
-        data-target-id="did-agent-container">
-    </script>
+<script
+  type="module"
+  src="https://agent.d-id.com/v2/index.js"
+  data-mode="full"
+  data-client-key="ck_elBTIrBd1dSWLKLVazl1J"
+  data-agent-id="v2_agt_GOAdORy_"
+  data-name="did-agent"
+  data-monitor="true"
+  data-target-id="did-agent-container">
+</script>
 
 </body>
 </html>
