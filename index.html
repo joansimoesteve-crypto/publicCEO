@@ -1,12 +1,78 @@
 <!DOCTYPE html>
-<html>
+<html lang="es">
+
 <head>
-    <title>Test</title>
-    src/style.css
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PublicCEO AI</title>
+
+    ">
+
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap"
+          rel="stylesheet">
 </head>
+
 <body>
 
-<h1>FUNCIONA</h1>
+<div class="container">
+
+    <section class="avatar-section">
+
+        <div class="avatar-card">
+
+            <img
+                src="avatar.png"
+                alt="Avatar"
+                draggable="false"
+            >
+
+            <div id="leftEye"></div>
+            <div id="rightEye"></div>
+
+            <div id="mouth"></div>
+
+            <div class="wave">
+                <span></span>
+                <span></span>
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+
+        </div>
+
+    </section>
+
+    <aside class="panel">
+
+        <h1>¡Hola! 👋</h1>
+
+        <p>
+            Soy tu asistente virtual PublicCEO.
+            Estoy aquí para ayudarte.
+        </p>
+
+        <div id="messages"></div>
+
+    </aside>
+
+</div>
+
+<div class="chatbar">
+
+    <input
+        id="prompt"
+        type="text"
+        placeholder="Escribe tu mensaje..."
+    >
+
+    <button id="mic">🎤</button>
+
+    <button id="send">➜</button>
+
+</div>
+
+<script src="main.js"></script>
 
 </body>
 </html>
