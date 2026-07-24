@@ -3,17 +3,20 @@
 
 <head>
 
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Asistente Virtual IA</title>
+    <title>Asistente Virtual IA</title>
 
-<link rel="stylesheet" href="./src/style.css">
+    ./src/style.css
 
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
 
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    fonts.gstatic.com"
+          crossorigin>
+
+    =Inter:wght@300;400;500;600;700&display=swap"
+          rel="stylesheet">
 
 </head>
 
@@ -30,6 +33,7 @@
         <div class="grid"></div>
 
         <div class="light light1"></div>
+
         <div class="light light2"></div>
 
     </div>
@@ -44,11 +48,7 @@
 
             <div class="avatar-card">
 
-                <img
-                    id="avatarImage"
-                    src="/avatar.png"
-                    draggable="false"
-                >
+                ./public/avatar.png
 
                 <div id="mouth"></div>
 
@@ -64,7 +64,7 @@
 
     </section>
 
-    <!-- Panel -->
+    <!-- Panel lateral -->
 
     <aside class="panel">
 
@@ -84,6 +84,8 @@
 
         </div>
 
+        <!-- Conversación -->
+
         <div class="conversation">
 
             <div id="messages">
@@ -92,9 +94,9 @@
 
                     <div class="bubble">
 
-                        Hola.
+                        Hola.<br><br>
 
-                        Soy tu asistente virtual.
+                        Soy tu asistente virtual.<br><br>
 
                         Estoy preparado para ayudarte con cualquier consulta.
 
@@ -105,6 +107,8 @@
             </div>
 
         </div>
+
+        <!-- Acciones rápidas -->
 
         <div class="quickActions">
 
@@ -126,24 +130,23 @@
 
         </div>
 
+        <!-- Entrada -->
+
         <div class="inputArea">
 
             <input
                 id="prompt"
                 type="text"
                 placeholder="Escribe tu pregunta..."
+                autocomplete="off"
             >
 
             <button id="send">
-
                 ➜
-
             </button>
 
             <button id="mic">
-
                 🎤
-
             </button>
 
         </div>
@@ -152,8 +155,7 @@
 
 </div>
 
-<script type="module" src="./src/main.js"></script>
+./src/main.js
 
 </body>
-
 </html>
