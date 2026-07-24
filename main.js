@@ -1,11 +1,14 @@
-const sendBtn = document.getElementById("send");
-const input = document.getElementById("prompt");
-const messages = document.getElementById("messages");
+const sendBtn =
+document.getElementById("send");
 
-const mouth = document.getElementById("mouth");
+const input =
+document.getElementById("prompt");
 
-const leftEye = document.getElementById("leftEye");
-const rightEye = document.getElementById("rightEye");
+const messages =
+document.getElementById("messages");
+
+const avatar =
+document.querySelector(".avatar-card");
 
 let speaking = false;
 
@@ -13,50 +16,40 @@ let speaking = false;
 
 function addMessage(text){
 
-    const div = document.createElement("div");
+    const div =
+    document.createElement("div");
 
     div.className = "bubble";
 
     div.textContent = text;
 
     messages.appendChild(div);
+
+    messages.scrollTop =
+    messages.scrollHeight;
 }
 
-// BOCA
-
-function animateMouth(){
-
-    if(!speaking) return;
-
-    mouth.style.height =
-        (8 + Math.random()*35) + "px";
-
-    requestAnimationFrame(
-        animateMouth
-    );
-}
+// VOZ
 
 function speak(text){
 
     speechSynthesis.cancel();
 
     const utter =
-        new SpeechSynthesisUtterance(text);
+    new SpeechSynthesisUtterance(text);
 
     utter.lang = "es-ES";
+
+    utter.rate = 1;
 
     utter.onstart = ()=>{
 
         speaking = true;
-
-        animateMouth();
     };
 
     utter.onend = ()=>{
 
         speaking = false;
-
-        mouth.style.height = "14px";
     };
 
     speechSynthesis.speak(utter);
@@ -66,7 +59,19 @@ function speak(text){
 
 async function answer(question){
 
-    return "Has preguntado: " + question;
+    const q =
+    question.toLowerCase();
+
+    if(q.includes("hola"))
+        return "Hola. Encantado de ayudarte.";
+
+    if(q.includes("servicios"))
+        return "Puedo informarte sobre servicios y soluciones.";
+
+    if(q.includes("contacto"))
+        return "Puedes contactar directamente con la empresa.";
+
+    return "He recibido tu consulta: " + question;
 }
 
 async function ask(question){
@@ -74,24 +79,25 @@ async function ask(question){
     addMessage("👤 " + question);
 
     const response =
-        await answer(question);
+    await answer(question);
 
     addMessage("🤖 " + response);
 
     speak(response);
 }
 
-// BOTÓN
+// BOTONES
 
 sendBtn.addEventListener("click",()=>{
 
-    const q = input.value.trim();
+    const text =
+    input.value.trim();
 
-    if(!q) return;
+    if(!text) return;
 
-    ask(q);
+    ask(text);
 
-    input.value = "";
+    input.value="";
 });
 
 input.addEventListener("keydown",(e)=>{
@@ -102,53 +108,90 @@ input.addEventListener("keydown",(e)=>{
     }
 });
 
-// OJOS
+// MOVIMIENTO 3D
 
-document.addEventListener("mousemove",(e)=>{
+document.addEventListener(
+"mousemove",
+(e)=>{
 
     const x =
-        (e.clientX/window.innerWidth-.5)*10;
+    (e.clientX /
+    window.innerWidth
+    - .5) * 18;
 
     const y =
-        (e.clientY/window.innerHeight-.5)*10;
+    (e.clientY /
+    window.innerHeight
+    - .5) * 10;
 
-    leftEye.style.transform =
-        `translate(${x}px,${y}px)`;
-
-    rightEye.style.transform =
-        `translate(${x}px,${y}px)`;
+    avatar.style.transform =
+    `
+    rotateY(${x}deg)
+    rotateX(${-y}deg)
+    `;
 });
 
-// PARPADEO
+// FLOTACIÓN
 
-function blink(){
+let time = 0;
 
-    leftEye.style.height = "2px";
-    rightEye.style.height = "2px";
+function breathing(){
 
-    setTimeout(()=>{
+    time += 0.01;
 
-        leftEye.style.height = "20px";
-        rightEye.style.height = "20px";
+    const y =
+    Math.sin(time) * 8;
 
-    },120);
+    avatar.style.translate =
+    `0 ${y}px`;
 
-    setTimeout(
-        blink,
-        2500 + Math.random()*3000
+    requestAnimationFrame(
+        breathing
     );
 }
 
-blink();
+breathing();
+
+// MICRO
+
+if(
+window.SpeechRecognition ||
+window.webkitSpeechRecognition
+){
+
+    const Recognition =
+    window.SpeechRecognition ||
+    window.webkitSpeechRecognition;
+
+    const recog =
+    new Recognition();
+
+    recog.lang = "es-ES";
+
+    document
+    .getElementById("mic")
+    .addEventListener(
+        "click",
+        ()=>recog.start()
+    );
+
+    recog.onresult = (e)=>{
+
+        const text =
+        e.results[0][0].transcript;
+
+        ask(text);
+    };
+}
 
 // SALUDO
 
-window.onload=()=>{
+window.onload = ()=>{
 
     setTimeout(()=>{
 
         speak(
-            "Hola. Soy Public CEO. ¿Cómo puedo ayudarte?"
+        "Hola. Soy Public CEO. ¿Cómo puedo ayudarte hoy?"
         );
 
     },1000);
