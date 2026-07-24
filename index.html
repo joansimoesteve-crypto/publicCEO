@@ -2,14 +2,17 @@
 <html lang="es">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>PublicCEO</title>
 
-    <link rel="stylesheet" href="style.css">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    2?family=Inter:wght@300;400;500;600;700&display=swap"
-        rel="stylesheet">
+<title>PublicCEO</title>
+
+">
+
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap"
+rel="stylesheet">
+
 </head>
 
 <body>
@@ -18,20 +21,18 @@
 
     <section class="avatar-section">
 
-        <div class="avatar-card">
+        <div class="did-wrapper">
 
-            <img
-                src="avatar.png"
-                alt="PublicCEO"
-                draggable="false"
-            >
+            <div class="avatar-glow"></div>
 
-            <div class="wave">
-                <span></span>
-                <span></span>
-                <span></span>
-                <span></span>
-                <span></span>
+            <div class="did-frame">
+
+                <h2>PublicCEO AI</h2>
+
+                <p>
+                    Avatar interactivo impulsado por D-ID
+                </p>
+
             </div>
 
         </div>
@@ -40,14 +41,19 @@
 
     <aside class="panel">
 
-        <h1>👋 PublicCEO</h1>
+        <h1>👋 Bienvenido</h1>
 
         <p>
-            Soy tu asistente virtual.
-            ¿Cómo puedo ayudarte hoy?
+            Conversa con tu avatar inteligente.
         </p>
 
-        <div id="messages"></div>
+        <div id="messages">
+
+            <div class="bubble">
+                Hola. Soy PublicCEO.
+            </div>
+
+        </div>
 
     </aside>
 
@@ -61,13 +67,26 @@
         placeholder="Escribe tu mensaje..."
     >
 
-    <button id="mic">🎤</button>
-
-    <button id="send">➜</button>
+    <button id="send">
+        ➜
+    </button>
 
 </div>
 
 <script src="main.js"></script>
+
+<script
+    type="module"
+    src="https://agent.d-id.com/v2/index.js"
+    data-mode="fabio"
+    data-client-key="ck_elBTIrBd1dSWLKLVazl1J"
+    data-agent-id="v2_agt_GOAdORy_"
+    data-name="did-agent"
+    data-monitor="true"
+    data-orientation="horizontal"
+    data-position="right"
+    data-open-mode="expanded">
+</script>
 
 </body>
 </html>
