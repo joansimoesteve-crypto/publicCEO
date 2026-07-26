@@ -2,380 +2,171 @@
     margin:0;
     padding:0;
     box-sizing:border-box;
-    font-family:'Inter',sans-serif;
 }
 
 body{
-
-    background:#09131f;
-    color:#fff;
-    overflow:hidden;
-
-}
-
-#background{
-
-    position:fixed;
-    inset:0;
-
-    background:
-    radial-gradient(circle at 15% 20%,rgba(0,160,255,.25),transparent 30%),
-    radial-gradient(circle at 85% 15%,rgba(0,255,255,.15),transparent 30%),
-    radial-gradient(circle at 50% 80%,rgba(71,90,255,.18),transparent 40%),
-    linear-gradient(135deg,#08111b,#0f1825,#071018);
-
-}
-
-#app{
-
-    position:relative;
-
-    width:100vw;
+    background:#07121d;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    flex-direction:column;
     height:100vh;
-
-    display:grid;
-
-    grid-template-columns:55% 45%;
-
+    overflow:hidden;
+    font-family:Arial,Helvetica,sans-serif;
 }
 
-/**************************/
-
-#left{
-
-    display:flex;
-
-    justify-content:center;
-    align-items:center;
-
-}
-
-#avatarContainer{
-
+#scene{
     position:relative;
-
     width:520px;
-    height:650px;
-
+    height:720px;
     display:flex;
-
     justify-content:center;
     align-items:center;
-
 }
 
-#avatarGlow{
-
+#aura{
     position:absolute;
-
-    width:420px;
-    height:420px;
-
+    width:430px;
+    height:430px;
     border-radius:50%;
-
-    background:#4ea2ff;
-
-    opacity:.35;
-
-    filter:blur(120px);
-
+    background:radial-gradient(circle,
+        rgba(0,255,255,.45),
+        rgba(0,255,255,.15),
+        transparent 72%);
+    filter:blur(35px);
+    animation:
+        auraPulse 4s infinite ease-in-out,
+        auraRotate 18s linear infinite;
 }
 
 #avatar{
-
     position:relative;
-
-    width:400px;
-
-    border-radius:28px;
-
-    overflow:hidden;
-
-    backdrop-filter:blur(20px);
-
-    background:rgba(255,255,255,.05);
-
-    border:1px solid rgba(255,255,255,.08);
-
-    box-shadow:
-
-    0 30px 70px rgba(0,0,0,.45);
-
+    width:430px;
+    animation:
+        breathe 4s ease-in-out infinite,
+        float 5s ease-in-out infinite;
 }
 
-#avatar img{
-
+#body{
     width:100%;
     display:block;
-
+    user-select:none;
+    pointer-events:none;
+    filter:drop-shadow(0 0 35px rgba(0,255,255,.45));
 }
-
-/**************************/
 
 .eye{
-
     position:absolute;
-
-    width:15px;
-    height:15px;
-
-    border-radius:50%;
-
-    background:#111;
-
-    transition:.08s;
-
+    width:42px;
+    height:20px;
+    overflow:hidden;
 }
 
-#eyeLeft{
-
-    left:137px;
-    top:182px;
-
+.left{
+    left:124px;
+    top:205px;
 }
 
-#eyeRight{
-
-    right:137px;
-    top:182px;
-
+.right{
+    right:122px;
+    top:205px;
 }
 
-.lid{
-
+.eyelid{
     position:absolute;
-
-    width:30px;
-    height:0px;
-
-    background:#dba982;
-
-    transition:.15s;
-
+    width:100%;
+    height:100%;
+    background:#f4c59d;
+    transform:translateY(-100%);
 }
 
-#lidLeft{
-
-    left:130px;
-    top:176px;
-
-}
-
-#lidRight{
-
-    right:130px;
-    top:176px;
-
+.eye.blink .eyelid{
+    animation:blink .22s ease;
 }
 
 #mouth{
-
     position:absolute;
-
-    width:60px;
-    height:10px;
-
-    background:#8d3030;
-
-    border-radius:0 0 50px 50px;
-
-    left:170px;
-    top:308px;
-
+    left:50%;
+    top:318px;
+    transform:translateX(-50%);
+    width:74px;
+    height:8px;
+    border-radius:50px;
+    background:#4d1e16;
+    transition:.12s;
 }
 
-/**************************/
-
-#right{
-
-    display:flex;
-
-    flex-direction:column;
-
-    gap:28px;
-
-    padding:45px;
-
-    background:rgba(255,255,255,.03);
-
-    backdrop-filter:blur(18px);
-
-    border-left:1px solid rgba(255,255,255,.08);
-
+#mouth.talk{
+    height:28px;
+    border-radius:0 0 40px 40px;
 }
 
-#logo{
-
-    display:flex;
-
-    align-items:center;
-
-    gap:20px;
-
-}
-
-#logoIcon{
-
-    width:62px;
-    height:62px;
-
-    border-radius:18px;
-
-    background:linear-gradient(135deg,#448cff,#2dd4ff);
-
-    display:flex;
-
-    justify-content:center;
-    align-items:center;
-
-    font-weight:700;
-
-}
-
-#logo h1{
-
-    font-size:30px;
-
-}
-
-#logo p{
-
-    opacity:.6;
-
-}
-
-#messages{
-
-    flex:1;
-
-    overflow:auto;
-
-}
-
-.bubble{
-
-    background:rgba(255,255,255,.08);
-
-    border-radius:22px;
-
-    padding:22px;
-
-    line-height:1.7;
-
-    font-size:17px;
-
-}
-
-#actions{
-
-    display:grid;
-
-    grid-template-columns:repeat(2,1fr);
-
-    gap:14px;
-
-}
-
-.action{
-
-    border:none;
-
-    height:52px;
-
-    border-radius:15px;
-
-    background:#ffffff10;
-
+#speech{
+    margin-top:25px;
     color:white;
+    font-size:22px;
+    padding:18px 28px;
+    border-radius:16px;
+    background:rgba(20,35,55,.9);
+    box-shadow:0 0 30px rgba(0,255,255,.25);
+    max-width:700px;
+    text-align:center;
+}
 
-    cursor:pointer;
+@keyframes blink{
 
-    transition:.25s;
+    0%{transform:translateY(-100%);}
+    50%{transform:translateY(0);}
+    100%{transform:translateY(-100%);}
 
 }
 
-.action:hover{
+@keyframes breathe{
 
-    background:#438dff;
+    0%,100%{
+        transform:scale(1);
+    }
 
-}
-
-#chat{
-
-    display:flex;
-
-    gap:12px;
+    50%{
+        transform:scale(1.018);
+    }
 
 }
 
-#prompt{
+@keyframes float{
 
-    flex:1;
+    0%,100%{
+        translate:0 0;
+    }
 
-    height:58px;
-
-    border:none;
-
-    border-radius:18px;
-
-    padding:20px;
-
-    background:#ffffff10;
-
-    color:white;
-
-    outline:none;
-
-    font-size:16px;
+    50%{
+        translate:0 -8px;
+    }
 
 }
 
-#send,
-#voice{
+@keyframes auraPulse{
 
-    width:58px;
-    height:58px;
+    0%,100%{
+        transform:scale(.95);
+        opacity:.55;
+    }
 
-    border:none;
-
-    border-radius:18px;
-
-    background:#438dff;
-
-    color:white;
-
-    cursor:pointer;
-
-    font-size:20px;
+    50%{
+        transform:scale(1.12);
+        opacity:1;
+    }
 
 }
 
-/**************************/
+@keyframes auraRotate{
 
-@media(max-width:1100px){
+    from{
+        rotate:0deg;
+    }
 
-#app{
-
-grid-template-columns:1fr;
-
-}
-
-#right{
-
-height:50vh;
-
-}
-
-#left{
-
-height:50vh;
-
-}
-
-#avatarContainer{
-
-transform:scale(.72);
-
-}
+    to{
+        rotate:360deg;
+    }
 
 }
