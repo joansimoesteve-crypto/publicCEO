@@ -1,139 +1,43 @@
 <!DOCTYPE html>
 <html lang="es">
-
 <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Avatar IA</title>
 
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-<title>PublicCEO AI</title>
-
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-
-<link rel="stylesheet" href="style.css">
-
+    <link rel="stylesheet" href="style.css">
 </head>
-
 <body>
 
-<div id="background"></div>
+<div id="scene">
 
-<div id="app">
+    <div id="aura"></div>
 
-    <section id="left">
+    <div id="avatar">
 
-        <div id="avatarContainer">
+        <img id="body"
+             src="avatar.png"
+             alt="Avatar">
 
-            <div id="avatarGlow"></div>
-
-            <div id="avatar">
-
-                <img
-                    id="avatarImage"
-                    src="avatar.png"
-                    draggable="false"
-                    alt="Avatar"
-                >
-
-                <div id="mouth"></div>
-
-                <div id="eyeLeft" class="eye"></div>
-                <div id="eyeRight" class="eye"></div>
-
-                <div id="lidLeft" class="lid"></div>
-                <div id="lidRight" class="lid"></div>
-
-            </div>
-
+        <div class="eye left">
+            <div class="eyelid"></div>
         </div>
 
-    </section>
-
-    <section id="right">
-
-        <div id="logo">
-
-            <div id="logoIcon">
-                AI
-            </div>
-
-            <div>
-
-                <h1>PublicCEO</h1>
-
-                <p>Asistente Virtual Inteligente</p>
-
-            </div>
-
+        <div class="eye right">
+            <div class="eyelid"></div>
         </div>
 
-        <div id="messages">
+        <div id="mouth"></div>
 
-            <div class="assistant">
-
-                <div class="bubble" id="bubble">
-
-Hola.
-
-Soy el asistente virtual de PublicCEO.
-
-Estoy preparado para ayudarte.
-
-Pregúntame cualquier cosa.
-
-                </div>
-
-            </div>
-
-        </div>
-
-        <div id="actions">
-
-            <button class="action">
-                Servicios
-            </button>
-
-            <button class="action">
-                Contacto
-            </button>
-
-            <button class="action">
-                Información
-            </button>
-
-            <button class="action">
-                Ayuda
-            </button>
-
-        </div>
-
-        <div id="chat">
-
-            <input
-                id="prompt"
-                type="text"
-                placeholder="Escribe aquí..."
-            >
-
-            <button id="send">
-                ➜
-            </button>
-
-            <button id="voice">
-                🎤
-            </button>
-
-        </div>
-
-    </section>
+    </div>
 
 </div>
 
-<script src="main.js"></script>
+<div id="speech">
+    Hola. Soy tu asistente virtual.
+</div>
+
+<script src="avatar.js"></script>
 
 </body>
-
 </html>
